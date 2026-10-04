@@ -81,3 +81,10 @@ footer{flex-direction:column;gap:12px;text-align:center}}
 /* Keep the desktop header clean; menu icon is mobile-only */
 .menu-toggle{display:none;border:0;background:transparent;padding:0;margin:0;color:inherit}
 @media(max-width:520px){.menu-toggle{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:30px;height:30px}.menu-toggle span{display:block;width:20px;height:1px;background:#fff}}
+
+
+/* Smooth lightbox opening and photo changes */
+.lightbox>img{opacity:0;transform:scale(.94);transition:opacity .38s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)}
+.lightbox.open>img{opacity:1;transform:scale(1)}
+.lightbox.open.is-switching>img{opacity:0;transform:scale(.975)}
+@media(max-width:520px){.lightbox>img{transform:scale(.96)}.lightbox.open>img{transform:scale(1)}.lightbox.open.is-switching>img{transform:scale(.985)}}
