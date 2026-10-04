@@ -90,3 +90,7 @@ footer{flex-direction:column;gap:12px;text-align:center}}
 .lightbox.open>img{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}
 .lightbox.open.is-switching>img{opacity:0;transform:translate3d(0,6px,0) scale(.97);filter:blur(1px)}
 @media(max-width:520px){.lightbox>img{transform:translate3d(0,10px,0) scale(.93)}.lightbox.open>img{transform:translate3d(0,0,0) scale(1)}.lightbox.open.is-switching>img{transform:translate3d(0,4px,0) scale(.98)}}
+
+
+.lightbox-details{min-width:0}.lightbox-meta{display:block;color:#aaa;font-size:10px;letter-spacing:.04em;margin-top:6px!important}.lightbox-details #lightbox-caption{display:block}
+@media(max-width:520px){.lightbox-meta{font-size:8px;line-height:1.5;max-width:75vw}}
