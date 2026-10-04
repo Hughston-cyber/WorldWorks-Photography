@@ -77,3 +77,7 @@ footer{flex-direction:column;gap:12px;text-align:center}}
 .loader-logo{width:42px;height:42px;object-fit:contain;margin-bottom:14px}
 .loader-name{font-size:14px;font-weight:700;letter-spacing:.08em}
 .loader-subtitle{margin-top:4px;color:var(--muted);font-size:9px;letter-spacing:.22em;text-transform:uppercase}
+
+/* Keep the desktop header clean; menu icon is mobile-only */
+.menu-toggle{display:none;border:0;background:transparent;padding:0;margin:0;color:inherit}
+@media(max-width:520px){.menu-toggle{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:30px;height:30px}.menu-toggle span{display:block;width:20px;height:1px;background:#fff}}
