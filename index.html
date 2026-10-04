@@ -624,6 +624,10 @@ if(menuToggle&&siteNav){
  menuToggle.addEventListener("click",()=>{const open=siteNav.classList.toggle("open");menuToggle.classList.toggle("open",open);menuToggle.setAttribute("aria-expanded",String(open));menuToggle.setAttribute("aria-label",open?"Close navigation":"Open navigation");});
  siteNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{siteNav.classList.remove("open");menuToggle.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");menuToggle.setAttribute("aria-label","Open navigation");}));
 }
+document.querySelectorAll('.photo img').forEach(img => {
+  if (img.complete) img.classList.add('is-loaded');
+  else img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true });
+});
 </script>
 
 </body>
