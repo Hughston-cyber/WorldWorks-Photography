@@ -28,3 +28,7 @@ nav{display:flex;gap:28px;font-size:13px;color:#d7d7d4}nav a{position:relative;t
 .lightbox-details{min-width:0}.lightbox-meta{display:block;color:#aaa;font-size:10px;letter-spacing:.04em;margin-top:6px!important}.lightbox-details #lightbox-caption{display:block}
 #lightbox-info{display:block}.lightbox-details{width:100%}#lightbox-year{display:block;margin-top:8px!important}
 @media(max-width:520px){.lightbox-meta{font-size:8px;line-height:1.5;max-width:75vw}#lightbox-year{margin-top:7px!important}}
+
+/* Refined lightbox metadata */
+.lightbox-details{display:flex;flex-direction:column;align-items:flex-start;gap:0}.lightbox-details #lightbox-caption{font-size:20px;line-height:1.2;margin:0 0 10px!important;color:#fff}.lightbox-meta{display:flex;flex-direction:column;gap:3px;color:#a5a5a2;font-size:10px;line-height:1.5;letter-spacing:.04em;margin:0!important}.lightbox-meta div{margin:0}.lightbox-details #lightbox-year{display:block;margin:9px 0 0!important;color:#777;font-size:9px;line-height:1;letter-spacing:.16em;text-transform:uppercase}
+@media(max-width:520px){.lightbox-details #lightbox-caption{font-size:15px;margin-bottom:8px!important}.lightbox-meta{font-size:8px;gap:2px;line-height:1.45}.lightbox-details #lightbox-year{font-size:8px;margin-top:7px!important}}
