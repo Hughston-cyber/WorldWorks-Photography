@@ -1,82 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b0b0c">
-  <meta property="og:title" content="World Works Photography">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="images/01.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="World Works Photography">
-  <meta name="twitter:image" content="images/01.jpg">
-  <title>World Works Photography</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090909"><meta property="og:title" content="World Works Photography"><meta property="og:image" content="images/01.jpg">
+<title>World Works Photography</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#090909;color:#f4f2ed;font-family:Arial,sans-serif}
+a{color:inherit;text-decoration:none}.nav{position:fixed;z-index:5;top:0;left:0;right:0;padding:25px 4vw;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.14em;text-transform:uppercase;mix-blend-mode:difference}.nav div{display:flex;gap:28px}
+.hero{height:100svh;min-height:650px;position:relative;display:flex;align-items:flex-end;padding:5vw;overflow:hidden}.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.52);z-index:-1}.hero-copy small,.eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase}.hero h1{font-size:clamp(80px,14vw,190px);line-height:.78;letter-spacing:-.08em;margin:20px 0 30px}.hero em,.intro em,.contact em{font-family:Georgia,serif;font-weight:400}.hero-meta{display:flex;gap:60px;font-size:11px;color:#ddd}
+main{padding:0 4vw}.section{padding:10vw 0;border-top:1px solid #292929}.intro{padding-left:4vw;max-width:1100px;font-size:clamp(42px,6vw,88px);line-height:1;letter-spacing:-.055em}
+.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:55px}.head h2{font-size:clamp(50px,7vw,105px);letter-spacing:-.07em;margin:0}.count{font-size:10px;letter-spacing:.14em;color:#999;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:start}.item{margin:0}.item img{width:100%;height:auto;display:block;transition:transform .7s cubic-bezier(.2,.8,.2,1)}.item:hover img{transform:scale(1.025)}.item:nth-child(1){grid-column:1/8}.item:nth-child(2){grid-column:9/13;margin-top:11vw}.item:nth-child(3){grid-column:2/7;margin-top:7vw}.item:nth-child(4){grid-column:8/13;margin-top:2vw}.item:nth-child(5){grid-column:1/5;margin-top:8vw}.caption{display:flex;justify-content:space-between;padding-top:13px;font-size:10px;text-transform:uppercase;letter-spacing:.1em}.caption span:last-child{color:#888}
+.feature{padding:10vw 0}.feature img{width:100%;height:auto;max-height:78vh;object-fit:contain;background:#111;display:block}.feature-meta{display:flex;justify-content:space-between;border-top:1px solid #292929;margin-top:18px;padding-top:18px}.feature-title{font-size:clamp(36px,5vw,76px);letter-spacing:-.055em}.muted{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.13em;padding-top:10px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:start}.about img{width:100%;height:600px;object-fit:contain;background:#111}.about h2{font-size:clamp(60px,8vw,120px);line-height:.82;letter-spacing:-.075em;margin:25px 0 40px}.about p{max-width:520px;color:#c7c5bf;line-height:1.7;font-size:16px}
+.contact h2{font-size:clamp(65px,11vw,160px);line-height:.82;letter-spacing:-.075em;margin:25px 0 45px}.contact p{color:#999;max-width:420px;line-height:1.6}.button{display:inline-flex;gap:25px;margin-top:25px;padding:16px 20px;border:1px solid #555;font-size:10px;letter-spacing:.14em;text-transform:uppercase}.button:hover{background:#f4f2ed;color:#090909}
+footer{display:flex;justify-content:space-between;padding:30px 4vw;border-top:1px solid #292929;color:#777;font-size:10px;text-transform:uppercase;letter-spacing:.13em}
+.lightbox{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;padding:5vw}.lightbox.open{display:flex}.lightbox img{max-width:90vw;max-height:88vh;object-fit:contain}.close{position:absolute;right:25px;top:18px;font-size:38px;background:none;border:0;color:white;cursor:pointer}.lbtitle{position:absolute;left:25px;bottom:20px;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:700px){.nav div{gap:12px}.hero{padding:8vw;min-height:600px}.hero-meta{display:block;line-height:1.8}.intro{padding-left:0}.grid{display:block}.item,.item:nth-child(n){margin:0 0 55px}.item img{width:100%;height:auto}.feature-meta{display:block}.about{display:block}.about img{height:auto;margin-bottom:45px}.about h2{margin-top:0}footer{display:block;line-height:2}}
+</style>
 </head>
 <body>
-  <div class="page-loader" id="page-loader" aria-hidden="true"><div class="loader-inner"><img src="favicon.svg" alt="" class="loader-logo"><div class="loader-name">WORLD WORKS</div><div class="loader-subtitle">PHOTOGRAPHY</div></div></div>
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="World Works Photography home"><span class="brand-mark"><img src="favicon.svg" alt="World Works Photography" decoding="async"></span><span><strong>World Works</strong><small>Photography</small></span></a>
-    <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
-    <nav id="site-nav" aria-label="Main navigation"><a href="gallery.html">Gallery</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
-  </header>
-  <main id="top">
-    <section class="hero" aria-label="Featured photograph"><img src="images/01.jpg" alt="Featured photograph by World Works Photography" fetchpriority="high" decoding="async"><div class="hero-overlay"></div><div class="hero-content"><p class="eyebrow">World Works Photography</p><h1>Stories in<br><em>motion.</em></h1><p class="hero-copy">Photography focused on trains, transport, places and the moments that make them worth remembering.</p><a class="button button-light" href="#work">Explore the work <span>↓</span></a></div></section>
-    <section class="intro"><div><p class="eyebrow">Selected work</p><h2>A growing collection.</h2></div><p class="intro-copy">A visual archive built around curiosity, movement and the details you might otherwise miss.</p></section>
-    <section id="work" aria-label="Photography gallery"><div class="gallery-heading"><span>Selected Work</span><span><span id="photo-count">14</span> Photographs</span></div><div class="gallery">
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/01.jpg" data-caption="The Dust Of Speed" data-year="2025"><img src="images/01.jpg" alt="The Dust Of Speed — World Works Photography" loading="eager"><span class="photo-number">The Dust Of Speed</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/02.jpg" data-caption="The Carriage Of Time" data-year="2026"><img src="images/02.jpg" alt="The Carriage Of Time — World Works Photography" loading="eager"><span class="photo-number">The Carriage Of Time</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/03.jpg" data-caption="Billys Fuming" data-year="2026"><img src="images/03.jpg" alt="Billys Fuming — World Works Photography" loading="eager"><span class="photo-number">Billys Fuming</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/04.jpg" data-caption="Victory Is Sweet" data-year="2024"><img src="images/04.jpg" alt="Victory Is Sweet — World Works Photography" loading="lazy"><span class="photo-number">Victory Is Sweet</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/05.jpg" data-caption="Leaf Is Sweet" data-year="2026"><img src="images/05.jpg" alt="Leaf Is Sweet — World Works Photography" loading="lazy"><span class="photo-number">Leaf Is Sweet</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/06.jpg" data-caption="Respect Seniority" data-year="2026"><img src="images/06.jpg" alt="Respect Seniority — World Works Photography" loading="lazy"><span class="photo-number">Respect Seniority</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/07.jpg" data-caption="Middle Of The Road" data-year="2026"><img src="images/07.jpg" alt="Middle Of The Road — World Works Photography" loading="lazy"><span class="photo-number">Middle Of The Road</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/08.jpg" data-caption="Right On Track" data-year="2026"><img src="images/08.jpg" alt="Right On Track — World Works Photography" loading="lazy"><span class="photo-number">Right On Track</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/09.jpg" data-caption="Dust Devil" data-year="2025"><img src="images/09.jpg" alt="Dust Devil — World Works Photography" loading="lazy"><span class="photo-number">Dust Devil</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/10.jpg" data-caption="Fire and Lights" data-year="2026"><img src="images/10.jpg" alt="Fire and Lights — World Works Photography" loading="lazy"><span class="photo-number">Fire and Lights</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/11.jpg" data-caption="One More Day" data-year="2026"><img src="images/11.jpg" alt="One More Day — World Works Photography" loading="lazy"><span class="photo-number">One More Day</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/12.jpg" data-caption="Gods Speed" data-year="2026"><img src="images/12.jpg" alt="Gods Speed — World Works Photography" loading="lazy"><span class="photo-number">Gods Speed</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/13.jpg" data-caption="Patience" data-year="2026"><img src="images/13.jpg" alt="Patience — World Works Photography" loading="lazy"><span class="photo-number">Patience</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/14.jpg" data-caption="City Bound" data-year="2026"><img src="images/14.jpg" alt="City Bound — World Works Photography" loading="lazy"><span class="photo-number">City Bound</span></button></figure>
-      </div></section>
-    <section class="about" id="about"><div class="about-image"><img src="images/03.jpg" alt="World Works Photography" loading="lazy" decoding="async"></div><div class="about-copy"><p class="eyebrow">About World Works</p><h2>Behind<br>the lens.</h2><p class="about-copy-text">A growing collection of photographs exploring movement, atmosphere, transport and the world around us.</p></div></section>
-    <section class="featured-frames" aria-label="Featured frames"><div class="featured-frames-heading"><p class="eyebrow">Featured frames</p><p>Selected photographs with a story beyond the gallery.</p></div><div class="featured-frames-track"><div class="featured-frames-set">
-      <article class="featured-frame"><div class="featured-frame-copy"><p class="eyebrow">01 / Exhibition</p><h2 class="featured-frame-title">Fire and Lights.</h2><p>A study in warm light, distance and atmosphere — a frame that found its way from the gallery to an art gallery exhibition.</p></div><div class="featured-frame-image"><img src="images/10.jpg" alt="Fire and Lights — World Works Photography" loading="lazy" decoding="async"></div></article>
-      <article class="featured-frame"><div class="featured-frame-copy"><p class="eyebrow">02 / Atmosphere</p><h2 class="featured-frame-title">The Dust Of Speed.</h2><p>Motion caught in a single moment, where speed, dust and light come together to create a sense of energy and atmosphere.</p></div><div class="featured-frame-image"><img src="images/01.jpg" alt="The Dust Of Speed — World Works Photography" loading="lazy" decoding="async"></div></article>
-      <article class="featured-frame"><div class="featured-frame-copy"><p class="eyebrow">03 / Movement</p><h2 class="featured-frame-title">City Bound.</h2><p>A glimpse of everyday movement through the city, capturing the quiet rhythm of a journey between places.</p></div><div class="featured-frame-image"><img src="images/14.jpg" alt="City Bound — World Works Photography" loading="lazy" decoding="async"></div></article>
-    </div><div class="featured-frames-set" aria-hidden="true">
-      <article class="featured-frame"><div class="featured-frame-copy"><p class="eyebrow">01 / Exhibition</p><h2 class="featured-frame-title">Fire and Lights.</h2><p>A study in warm light, distance and atmosphere — a frame that found its way from the gallery to an art gallery exhibition.</p></div><div class="featured-frame-image"><img src="images/10.jpg" alt="Fire and Lights — World Works Photography" loading="lazy" decoding="async"></div></article>
-      <article class="featured-frame"><div class="featured-frame-copy"><p class="eyebrow">02 / Atmosphere</p><h2 class="featured-frame-title">The Dust Of Speed.</h2><p>Motion caught in a single moment, where speed, dust and light come together to create a sense of energy and atmosphere.</p></div><div class="featured-frame-image"><img src="images/01.jpg" alt="The Dust Of Speed — World Works Photography" loading="lazy" decoding="async"></div></article>
-      <article class="featured-frame"><div class="featured-frame-copy"><p class="eyebrow">03 / Movement</p><h2 class="featured-frame-title">City Bound.</h2><p>A glimpse of everyday movement through the city, capturing the quiet rhythm of a journey between places.</p></div><div class="featured-frame-image"><img src="images/14.jpg" alt="City Bound — World Works Photography" loading="lazy" decoding="async"></div></article>
-    </div></div></section>
-    <section class="contact" id="contact"><p class="eyebrow">Contact</p><h2>Photography<br>worth remembering.</h2><p class="contact-copy">For photography enquiries, collaborations or general enquiries.</p><a class="button" href="404.html">Get in touch <span>→</span></a></section>
-  </main>
-  <footer><span>© <span id="year"></span> World Works Photography</span><span>World Works Photography</span></footer>
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lightbox-nav lightbox-prev" aria-label="Previous photograph">‹</button>
-    <button class="lightbox-nav lightbox-next" aria-label="Next photograph">›</button>
-    <button class="lightbox-close" aria-label="Close image viewer">×</button>
-    <img id="lightbox-image" src="" alt="" decoding="async">
-    <div id="lightbox-info">
-      <div class="lightbox-details">
-        <p id="lightbox-caption"></p>
-        <div id="lightbox-meta" class="lightbox-meta">
-          <div>Camera: Nikon D7000</div>
-          <div>Lens: 18–200mm f/3.5–5.6 ED</div>
-          <div>Edits: Adobe Lightroom</div>
-        </div>
-      </div>
-      <p id="lightbox-year">Year: 2026</p>
-    </div>
-  </div>
-  <script>
-const lightbox=document.getElementById("lightbox"),lightboxImage=document.getElementById("lightbox-image"),lightboxCaption=document.getElementById("lightbox-caption"),lightboxYear=document.getElementById("lightbox-year"),closeButton=document.querySelector(".lightbox-close"),previousButton=document.querySelector(".lightbox-prev"),nextButton=document.querySelector(".lightbox-next"),photoButtons=Array.from(document.querySelectorAll(".photo-button"));let currentPhotoIndex=-1;
-function showPhoto(index,animateChange=false){if(index<0||index>=photoButtons.length)return;const button=photoButtons[index];if(animateChange&&lightbox.classList.contains("open")){lightbox.classList.add("is-switching");setTimeout(()=>{lightboxImage.src=button.dataset.src;lightboxImage.alt=button.dataset.caption;lightboxCaption.textContent=button.dataset.caption;lightboxYear.textContent="Year: "+button.dataset.year;currentPhotoIndex=index;requestAnimationFrame(()=>requestAnimationFrame(()=>lightbox.classList.remove("is-switching")));},140);return}lightboxImage.src=button.dataset.src;lightboxImage.alt=button.dataset.caption;lightboxCaption.textContent=button.dataset.caption;lightboxYear.textContent="Year: "+button.dataset.year;currentPhotoIndex=index}
-photoButtons.forEach((button,index)=>button.addEventListener("click",()=>{showPhoto(index);lightbox.classList.add("open");lightbox.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}));function closeLightbox(){lightbox.classList.remove("open");lightbox.setAttribute("aria-hidden","true");document.body.style.overflow="";setTimeout(()=>lightboxImage.src="",200)}closeButton.addEventListener("click",closeLightbox);previousButton.addEventListener("click",()=>showPhoto((currentPhotoIndex-1+photoButtons.length)%photoButtons.length,true));nextButton.addEventListener("click",()=>showPhoto((currentPhotoIndex+1)%photoButtons.length,true));lightbox.addEventListener("click",event=>{if(event.target===lightbox)closeLightbox()});document.addEventListener("keydown",event=>{if(!lightbox.classList.contains("open"))return;if(event.key==="Escape")closeLightbox();if(event.key==="ArrowRight")showPhoto((currentPhotoIndex+1)%photoButtons.length,true);if(event.key==="ArrowLeft")showPhoto((currentPhotoIndex-1+photoButtons.length)%photoButtons.length,true)});document.getElementById("year").textContent=new Date().getFullYear();const pageLoader=document.getElementById("page-loader");if(pageLoader)window.addEventListener("load",()=>setTimeout(()=>pageLoader.classList.add("loaded"),250));const menuToggle=document.getElementById("menu-toggle"),siteNav=document.getElementById("site-nav");if(menuToggle&&siteNav){menuToggle.addEventListener("click",()=>{const open=siteNav.classList.toggle("open");menuToggle.classList.toggle("open",open);menuToggle.setAttribute("aria-expanded",String(open));menuToggle.setAttribute("aria-label",open?"Close navigation":"Open navigation")});siteNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{siteNav.classList.remove("open");menuToggle.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");menuToggle.setAttribute("aria-label","Open navigation")}))}document.querySelectorAll(".photo img").forEach(img=>{if(img.complete)img.classList.add("is-loaded");else img.addEventListener("load",()=>img.classList.add("is-loaded"),{once:true})});
+<nav class="nav"><a href="#top">World Works / Photography</a><div><a href="gallery.html">Gallery</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></div></nav>
+<header class="hero" id="top"><img src="images/01.jpg" alt="The Dust Of Speed"><div><small>MELBOURNE · AUSTRALIA · 2026</small><h1>World<br><em>Works.</em></h1><div class="hero-meta"><span>The Dust Of Speed</span><span>01 / 14 photographs</span></div></div></header>
+<main>
+<section class="section intro">Photography about <em>movement, places</em> and the details found along the way.</section>
+<section class="section" id="work"><div class="head"><h2>Selected work.</h2><div class="count">01—05 / 14 photographs</div></div><div class="grid">
+<figure class="item"><img src="images/01.jpg" alt="The Dust Of Speed"><figcaption class="caption"><span>The Dust Of Speed</span><span>2025</span></figcaption></figure>
+<figure class="item"><img src="images/02.jpg" alt="The Carriage Of Time"><figcaption class="caption"><span>The Carriage Of Time</span><span>2026</span></figcaption></figure>
+<figure class="item"><img src="images/10.jpg" alt="Fire and Lights"><figcaption class="caption"><span>Fire and Lights</span><span>2026</span></figcaption></figure>
+<figure class="item"><img src="images/14.jpg" alt="City Bound"><figcaption class="caption"><span>City Bound</span><span>2026</span></figcaption></figure>
+<figure class="item"><img src="images/13.jpg" alt="Patience"><figcaption class="caption"><span>Patience</span><span>2026</span></figcaption></figure>
+</div></section>
+<section class="feature"><img src="images/10.jpg" alt="Fire and Lights"><div class="feature-meta"><div class="feature-title">Fire and Lights.</div><div class="muted">Exhibited work · 2026</div></div></section>
+<section class="section about" id="about"><img src="images/13.jpg" alt="Patience"><div><div class="eyebrow">About World Works</div><h2>Look<br>closer.</h2><p>World Works Photography is a growing collection centred around transport, movement and the world around us.</p><p>Each photograph is part of a larger story — from the rush of a train passing through the city to the quieter details that are easy to miss.</p></div></section>
+<section class="section contact" id="contact"><div class="eyebrow">Next frame</div><h2>Keep<br><em>looking.</em></h2><p>A collection that keeps moving. More photographs are always on the way.</p><a class="button" href="404.html">Get in touch <span>→</span></a></section>
+</main>
+<footer><span>© 2026 World Works Photography</span><span>Melbourne, Australia</span></footer>
+<div class="lightbox" id="lightbox" aria-hidden="true"><button class="close" aria-label="Close">×</button><img id="lbimg" src="" alt=""><div class="lbtitle" id="lbtitle"></div></div>
+<script>
+const lb=document.getElementById('lightbox'),im=document.getElementById('lbimg'),title=document.getElementById('lbtitle');
+document.querySelectorAll('.item img').forEach(x=>x.addEventListener('click',()=>{im.src=x.src;im.alt=x.alt;title.textContent=x.alt;lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}));
+function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';im.src=''}document.querySelector('.close').onclick=close;lb.onclick=e=>{if(e.target===lb)close()};document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 </script>
-</body>
-</html>
+</body></html>
