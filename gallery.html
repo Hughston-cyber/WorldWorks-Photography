@@ -15,6 +15,30 @@
 <style>
 .gallery-page{padding-top:78px}.gallery-page-header{max-width:var(--max);margin:0 auto;padding:clamp(80px,10vw,150px) clamp(24px,5vw,72px) 60px}.gallery-page-header h1{font-size:clamp(58px,9vw,120px);margin-bottom:24px}.gallery-page-header p:not(.eyebrow){max-width:560px;color:var(--muted);line-height:1.8;font-size:15px}
 @media(max-width:520px){.gallery-page{padding-top:68px}.gallery-page-header{padding:70px 22px 45px}.gallery-page-header h1{font-size:clamp(48px,15vw,76px)}}
+
+/* WORLD WORKS 2.0 — GALLERY REDESIGN */
+.gallery-page{padding-top:78px;background:#0b0b0c}
+.gallery-page-header{max-width:none;margin:0;padding:clamp(90px,11vw,165px) clamp(24px,6vw,90px) clamp(55px,7vw,90px);border-bottom:1px solid rgba(255,255,255,.1);position:relative}
+.gallery-page-header::after{content:"01—111";position:absolute;right:clamp(24px,6vw,90px);bottom:28px;font-family:"Playfair Display",serif;font-size:clamp(30px,4vw,54px);font-style:italic;color:rgba(255,255,255,.1)}
+.gallery-page-header h1{font-size:clamp(68px,10vw,150px);line-height:.82;letter-spacing:-.07em;margin-bottom:34px;max-width:900px}
+.gallery-page-header h1 em{font-family:"Playfair Display",serif;font-weight:500}
+.gallery-page-header p:not(.eyebrow){max-width:560px;font-size:15px;line-height:1.9}
+.gallery-page>section[aria-label="All photographs"]{padding:0 clamp(18px,4vw,60px)}
+.gallery-heading{max-width:none;margin:0;padding:25px 0 18px;border-bottom:1px solid rgba(255,255,255,.12);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+.gallery-filters{max-width:none;margin:0;padding:18px 0 30px;display:flex;gap:8px;border-bottom:1px solid rgba(255,255,255,.08)}
+.gallery-filter{border:1px solid rgba(255,255,255,.16);background:transparent;color:var(--muted);padding:10px 17px;font:inherit;font-size:10px;letter-spacing:.16em;text-transform:uppercase;transition:.25s ease}
+.gallery-filter:hover,.gallery-filter.active{background:#fff;color:#0b0b0c;border-color:#fff}
+.gallery{padding:28px 0 80px;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.gallery .photo{background:#111;border:0;overflow:hidden}
+.gallery .photo-button{display:block;width:100%;height:100%;background:#111;border:0;padding:0;cursor:pointer;position:relative}
+.gallery .photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s ease,opacity .5s ease}
+.gallery .photo:hover img{transform:scale(1.025)}
+.gallery .photo-button::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.72));opacity:.75;pointer-events:none}
+.gallery .photo-number{position:absolute;z-index:2;left:18px;bottom:15px;color:#fff;font-size:11px;letter-spacing:.08em;text-align:left;max-width:80%;line-height:1.3}
+.gallery .photo.is-filtered{display:none}
+@media(max-width:900px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.gallery-page-header::after{display:none}}
+@media(max-width:520px){.gallery-page{padding-top:68px}.gallery-page-header{padding:72px 22px 55px}.gallery-page-header h1{font-size:clamp(54px,17vw,88px)}.gallery-page>section[aria-label="All photographs"]{padding:0 14px}.gallery{grid-template-columns:1fr;gap:12px;padding-top:20px}.gallery .photo img{aspect-ratio:4/3}.gallery-heading{padding-top:20px}.gallery-filters{overflow-x:auto;padding-bottom:20px}.gallery-filter{white-space:nowrap}}
+
 </style>
 </head>
 <body>
