@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Get in touch — World Works Photography</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="style.css">
 <style>
-.contact-page{min-height:100vh;padding-top:78px;display:grid;grid-template-columns:1.05fr .95fr}
-.contact-page-image{min-height:calc(100vh - 78px);position:relative;overflow:hidden;background:#0e0e10}
-.contact-page-image img{width:100%;height:100%;object-fit:cover;display:block}
-.contact-page-image::after{content:"WORLD WORKS / CONTACT";position:absolute;left:clamp(22px,4vw,55px);bottom:30px;font-size:9px;letter-spacing:.2em;color:#fff;text-shadow:0 2px 8px #000}
-.contact-page-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(60px,8vw,120px);background:#0b0b0c}
-.contact-page-copy .eyebrow{margin-bottom:18px}
-.contact-page-copy h1{font-size:clamp(64px,8vw,125px);line-height:.84;letter-spacing:-.06em;margin-bottom:30px}
-.contact-page-copy p{max-width:460px;color:var(--muted);font-size:15px;line-height:1.8;margin:0 0 28px}
-.contact-back{margin-top:10px}
-@media(max-width:800px){.contact-page{grid-template-columns:1fr}.contact-page-image{min-height:48vh;height:48vh}.contact-page-copy{padding:70px 25px}.contact-page-copy h1{font-size:clamp(58px,15vw,90px)}}
+.contact-hero{min-height:100vh;padding-top:78px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(360px,.75fr);position:relative;overflow:hidden;background:#0b0b0c}
+.contact-visual{position:relative;min-height:calc(100vh - 78px);overflow:hidden;background:#0e0e10}
+.contact-visual img{width:100%;height:100%;object-fit:contain;display:block;filter:contrast(1.03)}
+.contact-visual::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(11,11,12,.7) 100%);z-index:1;pointer-events:none}
+.contact-label{position:absolute;left:clamp(24px,4vw,60px);bottom:32px;z-index:2;font-size:9px;letter-spacing:.22em;color:#fff;opacity:.8}
+.contact-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(50px,7vw,110px) clamp(32px,5vw,80px);position:relative}
+.contact-copy::before{content:"CONTACT / 01";position:absolute;top:36px;right:clamp(32px,5vw,80px);font-size:9px;letter-spacing:.2em;color:var(--muted)}
+.contact-eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.25em;color:var(--muted);margin:0 0 24px}
+.contact-copy h1{font-family:"Playfair Display",serif;font-weight:400;font-size:clamp(70px,8vw,132px);line-height:.8;letter-spacing:-.065em;margin:0 0 42px}
+.contact-copy h1 em{font-style:italic}
+.contact-copy p:not(.contact-eyebrow){max-width:390px;color:var(--muted);font-size:15px;line-height:1.9;margin:0 0 34px}
+.contact-back{align-self:flex-start}
+.contact-number{position:absolute;bottom:34px;right:clamp(32px,5vw,80px);font-family:"Playfair Display",serif;font-size:42px;color:rgba(255,255,255,.08);line-height:1}
+@media(max-width:800px){
+.contact-hero{grid-template-columns:1fr;padding-top:70px}
+.contact-visual{min-height:50vh;height:50vh}
+.contact-visual::before{background:linear-gradient(180deg,transparent 55%,rgba(11,11,12,.75) 100%)}
+.contact-copy{min-height:50vh;padding:65px 25px 80px}
+.contact-copy::before{top:28px;right:25px}
+.contact-copy h1{font-size:clamp(64px,18vw,100px);margin-bottom:30px}
+.contact-number{bottom:24px;right:25px}
+}
 </style>
 </head>
 <body>
@@ -23,13 +36,17 @@
 <a class="brand" href="index.html" aria-label="World Works Photography home"><span class="brand-mark"><img src="favicon.svg" alt="World Works Photography" decoding="async"></span><span><strong>World Works</strong><small>Photography</small></span></a>
 <nav aria-label="Main navigation"><a href="gallery.html">Gallery</a><a href="index.html#work">Work</a><a href="index.html#about">About</a><a href="contact.html" class="active">Contact</a></nav>
 </header>
-<main class="contact-page">
-<div class="contact-page-image"><img src="images/13.jpg" alt="Patience"><div></div></div>
-<section class="contact-page-copy">
-<p class="eyebrow">Get in touch</p>
+<main class="contact-hero">
+<section class="contact-visual">
+<img src="images/13.jpg" alt="Patience">
+<span class="contact-label">WORLD WORKS / CONTACT</span>
+</section>
+<section class="contact-copy">
+<p class="contact-eyebrow">Get in touch</p>
 <h1>Let's<br><em>talk.</em></h1>
 <p>World Works Photography is always open to new conversations, ideas and opportunities surrounding the work.</p>
 <a class="button contact-back" href="index.html">Back to World Works <span>→</span></a>
+<span class="contact-number">01</span>
 </section>
 </main>
 </body>
