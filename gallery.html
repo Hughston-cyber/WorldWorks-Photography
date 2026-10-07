@@ -34,7 +34,7 @@
 .gallery .photo img{display:block;width:100%;height:auto;object-fit:contain;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s ease,opacity .5s ease}
 .gallery .photo:hover img{transform:scale(1.025)}
 .gallery .photo-button::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.72));opacity:.75;pointer-events:none}
-.gallery .photo-number{position:absolute;z-index:2;left:18px;bottom:15px;color:#fff;font-size:11px;letter-spacing:.08em;text-align:left;max-width:80%;line-height:1.3}
+.gallery .photo-number{position:absolute;z-index:2;left:18px;bottom:15px;color:#fff;font-size:11px;letter-spacing:.08em;text-align:left;max-width:80%;line-height:1.3}.exhibited-tag{display:block;margin-top:7px;width:max-content;padding:5px 7px;border:1px solid rgba(255,255,255,.65);font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:#fff}
 .gallery .photo.is-filtered{display:none}
 @media(max-width:900px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.gallery-page-header::after{display:none}}
 @media(max-width:520px){.gallery-page{padding-top:68px}.gallery-page-header{padding:72px 22px 55px}.gallery-page-header h1{font-size:clamp(54px,17vw,88px)}.gallery-page>section[aria-label="All photographs"]{padding:0 14px}.gallery{grid-template-columns:1fr;gap:12px;padding-top:20px}.gallery .photo img{object-fit:contain}.gallery-heading{padding-top:20px}.gallery-filters{overflow-x:auto;padding-bottom:20px}.gallery-filter{white-space:nowrap}}
@@ -55,7 +55,7 @@
 <button class="gallery-filter active" data-filter="all">All</button>
 <button class="gallery-filter" data-filter="2026">2026</button>
 <button class="gallery-filter" data-filter="2025">2025</button>
-<button class="gallery-filter" data-filter="2024">2024</button>
+<button class="gallery-filter" data-filter="2024">2024</button><button class="gallery-filter" data-filter="exhibited">Exhibited</button>
 </div>
 <div class="gallery">
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/01.jpg" data-caption="The Dust Of Speed" data-year="2025"><img src="images/01.jpg" alt="The Dust Of Speed — World Works Photography" loading="eager"><span class="photo-number">The Dust Of Speed</span></button></figure>
@@ -68,7 +68,7 @@
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/14.jpg" data-caption="City Bound" data-year="2026"><img src="images/14.jpg" alt="City Bound — World Works Photography" loading="lazy"><span class="photo-number">City Bound</span></button></figure>
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/07.jpg" data-caption="Middle Of The Road" data-year="2026"><img src="images/07.jpg" alt="Middle Of The Road — World Works Photography" loading="lazy"><span class="photo-number">Middle Of The Road</span></button></figure>
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/09.jpg" data-caption="Dust Devil" data-year="2025"><img src="images/09.jpg" alt="Dust Devil — World Works Photography" loading="lazy"><span class="photo-number">Dust Devil</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/10.jpg" data-caption="Fire and Lights" data-year="2026"><img src="images/10.jpg" alt="Fire and Lights — World Works Photography" loading="lazy"><span class="photo-number">Fire and Lights</span></button></figure>
+<figure class="photo photo-wide"><button class="photo-button" data-src="images/10.jpg" data-caption="Fire and Lights" data-year="2026" data-exhibited="true"><img src="images/10.jpg" alt="Fire and Lights — World Works Photography" loading="lazy"><span class="photo-number">Fire and Lights<span class="exhibited-tag">Exhibited Work</span></span></button></figure>
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/11.jpg" data-caption="One More Day" data-year="2026"><img src="images/11.jpg" alt="One More Day — World Works Photography" loading="lazy"><span class="photo-number">One More Day</span></button></figure>
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/12.jpg" data-caption="Gods Speed" data-year="2026"><img src="images/12.jpg" alt="Gods Speed — World Works Photography" loading="lazy"><span class="photo-number">Gods Speed</span></button></figure>
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/13.jpg" data-caption="Patience" data-year="2026"><img src="images/13.jpg" alt="Patience — World Works Photography" loading="lazy"><span class="photo-number">Patience</span></button></figure>
@@ -184,7 +184,9 @@ photoButtons.forEach((button,index)=>button.addEventListener("click",()=>{showPh
 </script>
 <script>
 const galleryFilters=Array.from(document.querySelectorAll(".gallery-filter")),galleryPhotos=Array.from(document.querySelectorAll(".gallery .photo")),photoCount=document.getElementById("photo-count");
-galleryFilters.forEach(filter=>filter.addEventListener("click",()=>{const year=filter.dataset.filter;galleryFilters.forEach(item=>item.classList.toggle("active",item===filter));let visible=0;galleryPhotos.forEach(photo=>{const button=photo.querySelector(".photo-button");const show=year==="all"||button.dataset.year===year;photo.classList.toggle("is-filtered",!show);if(show)visible++});photoCount.textContent=visible}));
+function applyGalleryFilter(filterValue){const filter=galleryFilters.find(item=>item.dataset.filter===filterValue)||galleryFilters[0];galleryFilters.forEach(item=>item.classList.toggle("active",item===filter));let visible=0;galleryPhotos.forEach(photo=>{const button=photo.querySelector(".photo-button");const show=filterValue==="all"||filterValue==="exhibited"?(filterValue==="all"?true:button.dataset.exhibited==="true"):button.dataset.year===filterValue;photo.classList.toggle("is-filtered",!show);if(show)visible++});photoCount.textContent=visible}
+galleryFilters.forEach(filter=>filter.addEventListener("click",()=>{applyGalleryFilter(filter.dataset.filter);history.replaceState(null,"",filter.dataset.filter==="all"?"gallery.html":"gallery.html?filter="+filter.dataset.filter)}));
+const initialFilter=new URLSearchParams(window.location.search).get("filter")||"all";applyGalleryFilter(initialFilter);
 </script>
 </body>
 </html>
