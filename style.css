@@ -52,3 +52,8 @@ nav{display:flex;gap:28px;font-size:13px;color:#d7d7d4}nav a{position:relative;t
 .photo img.is-loaded{transform:scale(1);filter:none}
 .photo-button:hover .photo-number{opacity:1}
 @media(max-width:800px){.gallery-page-header::after{display:none}.gallery-page-header h1{font-size:clamp(58px,14vw,100px)}}
+
+/* Preserve each gallery image's original aspect ratio */
+.gallery .photo{aspect-ratio:auto;height:auto}
+.gallery .photo-button{height:auto;aspect-ratio:auto}
+.gallery .photo img{height:auto;aspect-ratio:auto;object-fit:contain}
