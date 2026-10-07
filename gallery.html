@@ -55,7 +55,7 @@
 <button class="gallery-filter active" data-filter="all">All</button>
 <button class="gallery-filter" data-filter="2026">2026</button>
 <button class="gallery-filter" data-filter="2025">2025</button>
-<button class="gallery-filter" data-filter="2024">2024</button><button class="gallery-filter" data-filter="exhibited">Exhibited</button>
+<button class="gallery-filter" data-filter="2024">2024</button>
 </div>
 <div class="gallery">
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/01.jpg" data-caption="The Dust Of Speed" data-year="2025"><img src="images/01.jpg" alt="The Dust Of Speed — World Works Photography" loading="eager"><span class="photo-number">The Dust Of Speed</span></button></figure>
@@ -184,7 +184,7 @@ photoButtons.forEach((button,index)=>button.addEventListener("click",()=>{showPh
 </script>
 <script>
 const galleryFilters=Array.from(document.querySelectorAll(".gallery-filter")),galleryPhotos=Array.from(document.querySelectorAll(".gallery .photo")),photoCount=document.getElementById("photo-count");
-function applyGalleryFilter(filterValue){const filter=galleryFilters.find(item=>item.dataset.filter===filterValue)||galleryFilters[0];galleryFilters.forEach(item=>item.classList.toggle("active",item===filter));let visible=0;galleryPhotos.forEach(photo=>{const button=photo.querySelector(".photo-button");const show=filterValue==="all"||filterValue==="exhibited"?(filterValue==="all"?true:button.dataset.exhibited==="true"):button.dataset.year===filterValue;photo.classList.toggle("is-filtered",!show);if(show)visible++});photoCount.textContent=visible}
+function applyGalleryFilter(filterValue){const filter=galleryFilters.find(item=>item.dataset.filter===filterValue)||galleryFilters[0];galleryFilters.forEach(item=>item.classList.toggle("active",item===filter));let visible=0;galleryPhotos.forEach(photo=>{const button=photo.querySelector(".photo-button");const show=filterValue==="all"||button.dataset.year===filterValue;photo.classList.toggle("is-filtered",!show);if(show)visible++});photoCount.textContent=visible}
 galleryFilters.forEach(filter=>filter.addEventListener("click",()=>{applyGalleryFilter(filter.dataset.filter);history.replaceState(null,"",filter.dataset.filter==="all"?"gallery.html":"gallery.html?filter="+filter.dataset.filter)}));
 const initialFilter=new URLSearchParams(window.location.search).get("filter")||"all";applyGalleryFilter(initialFilter);
 </script>
