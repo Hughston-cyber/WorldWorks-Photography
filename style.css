@@ -57,3 +57,9 @@ nav{display:flex;gap:28px;font-size:13px;color:#d7d7d4}nav a{position:relative;t
 .gallery .photo{aspect-ratio:auto;height:auto}
 .gallery .photo-button{height:auto;aspect-ratio:auto}
 .gallery .photo img{height:auto;aspect-ratio:auto;object-fit:contain}
+
+/* Keep each gallery item at its own natural image height */
+.gallery{align-items:start}
+.gallery .photo{align-self:start;height:auto}
+.gallery .photo-button{height:auto;align-self:start}
+.gallery .photo img{height:auto;width:100%;object-fit:contain}
