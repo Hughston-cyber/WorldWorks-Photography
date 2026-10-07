@@ -225,13 +225,31 @@ const lightbox=document.getElementById("lightbox"),lightboxImage=document.getEle
 function showPhoto(index,animateChange=false){if(index<0||index>=photoButtons.length)return;const button=photoButtons[index];if(animateChange&&lightbox.classList.contains("open")){lightbox.classList.add("is-switching");setTimeout(()=>{lightboxImage.src=button.dataset.src;lightboxImage.alt=button.dataset.caption;lightboxCaption.textContent=button.dataset.caption;lightboxYear.textContent="Year: "+button.dataset.year;currentPhotoIndex=index;requestAnimationFrame(()=>requestAnimationFrame(()=>lightbox.classList.remove("is-switching")));},140);return}lightboxImage.src=button.dataset.src;lightboxImage.alt=button.dataset.caption;lightboxCaption.textContent=button.dataset.caption;lightboxYear.textContent="Year: "+button.dataset.year;currentPhotoIndex=index}
 photoButtons.forEach((button,index)=>button.addEventListener("click",()=>{showPhoto(index);lightbox.classList.add("open");lightbox.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}));function closeLightbox(){lightbox.classList.remove("open");lightbox.setAttribute("aria-hidden","true");document.body.style.overflow="";setTimeout(()=>lightboxImage.src="",200)}closeButton.addEventListener("click",closeLightbox);previousButton.addEventListener("click",()=>showPhoto((currentPhotoIndex-1+photoButtons.length)%photoButtons.length,true));nextButton.addEventListener("click",()=>showPhoto((currentPhotoIndex+1)%photoButtons.length,true));lightbox.addEventListener("click",event=>{if(event.target===lightbox)closeLightbox()});document.addEventListener("keydown",event=>{if(!lightbox.classList.contains("open"))return;if(event.key==="Escape")closeLightbox();if(event.key==="ArrowRight")showPhoto((currentPhotoIndex+1)%photoButtons.length,true);if(event.key==="ArrowLeft")showPhoto((currentPhotoIndex-1+photoButtons.length)%photoButtons.length,true)});document.getElementById("year").textContent=new Date().getFullYear();const menuToggle=document.getElementById("menu-toggle"),siteNav=document.getElementById("site-nav");if(menuToggle&&siteNav){menuToggle.addEventListener("click",()=>{const open=siteNav.classList.toggle("open");menuToggle.classList.toggle("open",open);menuToggle.setAttribute("aria-expanded",String(open));menuToggle.setAttribute("aria-label",open?"Close navigation":"Open navigation")});siteNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{siteNav.classList.remove("open");menuToggle.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");menuToggle.setAttribute("aria-label","Open navigation")}))}
 
-const galleryLoader=document.getElementById("gallery-loader"),galleryLoaderSkip=document.getElementById("gallery-loader-skip"),galleryLoaderStatus=document.getElementById("gallery-loader-status"),loaderStart=performance.now();
+const galleryLoader=document.getElementById("gallery-loader"),galleryLoaderSkip=document.getElementById("gallery-loader-skip"),galleryLoaderStatus=document.getElementById("gallery-loader-status");
 let loaderHidden=false;
 function hideGalleryLoader(){if(loaderHidden)return;loaderHidden=true;galleryLoader.classList.add("is-hidden");setTimeout(()=>galleryLoader.remove(),800)}
 galleryLoaderSkip.addEventListener("click",hideGalleryLoader);
 setTimeout(()=>galleryLoaderSkip.classList.add("is-visible"),3500);
-setTimeout(()=>{if(!loaderHidden){galleryLoaderStatus.textContent="Opening the collection";hideGalleryLoader()}},6500);
-window.addEventListener("load",()=>{const elapsed=performance.now()-loaderStart;setTimeout(hideGalleryLoader,Math.max(700,1100-elapsed))});
+
+const galleryImages=Array.from(document.querySelectorAll(".gallery .photo img"));
+let galleryImagesLoaded=0;
+const totalGalleryImages=galleryImages.length;
+
+function updateGalleryLoading(){
+  galleryImagesLoaded++;
+  galleryLoaderStatus.textContent=galleryImagesLoaded+" / "+totalGalleryImages+" photographs loaded";
+  if(galleryImagesLoaded>=totalGalleryImages){
+    galleryLoaderStatus.textContent="Collection ready";
+    setTimeout(hideGalleryLoader,500);
+  }
+}
+
+galleryImages.forEach(img=>{
+  const preload=new Image();
+  preload.onload=updateGalleryLoading;
+  preload.onerror=updateGalleryLoading;
+  preload.src=img.currentSrc||img.src;
+});
 </script>
 <script>
 const galleryFilters=Array.from(document.querySelectorAll(".gallery-filter")),galleryPhotos=Array.from(document.querySelectorAll(".gallery .photo")),photoCount=document.getElementById("photo-count");
