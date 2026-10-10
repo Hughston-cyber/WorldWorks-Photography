@@ -20,6 +20,22 @@ main{padding:0 4vw}.section{padding:10vw 0;border-top:1px solid #292929}.intro{p
 footer{display:flex;justify-content:space-between;padding:30px 4vw;border-top:1px solid #292929;color:#777;font-size:10px;text-transform:uppercase;letter-spacing:.13em}
 .lightbox{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;padding:5vw}.lightbox.open{display:flex}.lightbox img{max-width:90vw;max-height:88vh;object-fit:contain}.close{position:absolute;right:25px;top:18px;font-size:38px;background:none;border:0;color:white;cursor:pointer}.lbtitle{position:absolute;left:25px;bottom:20px;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
 @media(max-width:700px){.nav div{gap:12px}.hero{padding:8vw;min-height:600px}.hero-meta{display:block;line-height:1.8}.intro{padding-left:0}.grid{display:block}.item,.item:nth-child(n){margin:0 0 55px}.item img{width:100%;height:auto}.feature-meta{display:block}.about{display:block}.about img{height:auto;margin-bottom:45px}.about h2{margin-top:0}footer{display:block;line-height:2}}
+
+/* WORLD WORKS — cinematic, Apple-inspired motion */
+:root{--ww-ease:cubic-bezier(.16,1,.3,1)}
+html{scroll-padding-top:88px}
+.ww-progress{position:fixed;z-index:10001;top:0;left:0;width:100%;height:2px;pointer-events:none;background:rgba(255,255,255,.08)}
+.ww-progress span{display:block;width:100%;height:100%;background:#f4f2ed;transform:scaleX(0);transform-origin:left center}
+.ww-reveal{opacity:0;transform:translate3d(0,28px,0);transition:opacity .9s var(--ww-ease),transform 1s var(--ww-ease);transition-delay:var(--ww-delay,0ms)}
+.ww-reveal.ww-visible{opacity:1;transform:translate3d(0,0,0)}
+.ww-reveal.ww-reveal-left{transform:translate3d(-24px,0,0)}
+.ww-reveal.ww-reveal-left.ww-visible{transform:translate3d(0,0,0)}
+.item img,.feature img,.about img{transition:transform 1s var(--ww-ease),filter .8s ease}
+.item,.feature,.about,.contact{backface-visibility:hidden}
+.button,.exhibited-label{transition:background .35s ease,color .35s ease,border-color .35s ease,transform .5s var(--ww-ease)}
+.button:hover,.exhibited-label:hover{transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ww-reveal,.ww-reveal.ww-reveal-left{opacity:1;transform:none;transition:none}.ww-progress{display:none}}
+
 </style>
 </head>
 <body>
@@ -46,4 +62,63 @@ const lb=document.getElementById('lightbox'),im=document.getElementById('lbimg')
 document.querySelectorAll('.item img').forEach(x=>x.addEventListener('click',()=>{im.src=x.src;im.alt=x.alt;title.textContent=x.alt;lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}));
 function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';im.src=''}document.querySelector('.close').onclick=close;lb.onclick=e=>{if(e.target===lb)close()};document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 </script>
+
+<script>
+/* World Works cinematic motion system — accessible and lightweight */
+(()=> {
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const progress=document.createElement('div');
+  progress.className='ww-progress';
+  progress.setAttribute('aria-hidden','true');
+  progress.innerHTML='<span></span>';
+  if(!reduceMotion) document.body.appendChild(progress);
+  const bar=progress.querySelector('span');
+  let ticking=false;
+  const updateProgress=()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    if(bar) bar.style.transform='scaleX('+(max>0?Math.min(1,window.scrollY/max):0)+')';
+    ticking=false;
+  };
+  window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(updateProgress);ticking=true}},{passive:true});
+  updateProgress();
+  const revealSelectors=[
+    '.hero-copy','.hero-content','.intro','.section','.feature','.about','.contact',
+    '.gallery-page-header','.gallery-heading','.gallery-filters','.gallery .photo',
+    '.collections-hero','.collections-intro','.collection-card','.collections-footer',
+    '.contact-visual','.contact-copy','.head','.item'
+  ];
+  const targets=[...new Set(revealSelectors.flatMap(s=>Array.from(document.querySelectorAll(s))))];
+  targets.forEach((el,i)=>{
+    el.classList.add('ww-reveal');
+    if(el.matches('.about img,.contact-visual')) el.classList.add('ww-reveal-left');
+    if(el.matches('.feature-meta,.contact-copy')) el.style.setProperty('--ww-delay','90ms');
+    if(el.matches('.gallery .photo,.collection-card,.item')) el.style.setProperty('--ww-delay',Math.min((i%5)*65,260)+'ms');
+  });
+  if(reduceMotion||!('IntersectionObserver' in window)){
+    targets.forEach(el=>el.classList.add('ww-visible'));
+  }else{
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add('ww-visible');observer.unobserve(entry.target)}
+      });
+    },{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(el=>observer.observe(el));
+  }
+  const heroImage=document.querySelector('.hero img');
+  if(heroImage&&!reduceMotion&&window.matchMedia('(min-width: 700px)').matches){
+    let heroTick=false;
+    window.addEventListener('scroll',()=>{
+      if(heroTick)return;
+      heroTick=true;
+      requestAnimationFrame(()=>{
+        const y=Math.min(window.scrollY,window.innerHeight);
+        heroImage.style.setProperty('--ww-scroll',y);
+        heroImage.style.translate='0 '+(y*.08)+'px';
+        heroTick=false;
+      });
+    },{passive:true});
+  }
+})();
+</script>
+
 </body></html>
