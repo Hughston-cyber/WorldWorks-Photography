@@ -11,7 +11,37 @@
 .collections-page{padding-top:78px;background:#0b0b0c}.collections-hero{position:relative;overflow:hidden;padding:clamp(95px,12vw,175px) clamp(24px,7vw,110px) clamp(70px,9vw,120px);border-bottom:1px solid var(--line);background:linear-gradient(135deg,#0b0b0c,#121214 55%,#0b0b0c)}.collections-hero::after{content:"WORLD WORKS / CURATED";position:absolute;right:clamp(24px,5vw,72px);bottom:38px;color:rgba(255,255,255,.28);font-size:9px;letter-spacing:.2em}.collections-hero h1{font-size:clamp(68px,10vw,150px);line-height:.82;letter-spacing:-.06em;max-width:950px}.collections-hero p:not(.eyebrow){max-width:520px;color:var(--muted);font-size:14px;line-height:1.9;margin:30px 0 0}.collections-intro{max-width:var(--max);margin:0 auto;padding:55px clamp(24px,5vw,72px) 28px;display:flex;justify-content:space-between;align-items:end;gap:30px}.collections-intro h2{font-size:clamp(34px,5vw,62px);line-height:.95;letter-spacing:-.04em}.collections-intro>p{max-width:360px;color:var(--muted);font-size:12px;line-height:1.7;margin:0}.collections-grid{max-width:var(--max);margin:0 auto;padding:25px clamp(24px,5vw,72px) 120px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}.collection-card{position:relative;display:block;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,.08);min-width:0}.collection-card:nth-child(1){grid-column:1/8}.collection-card:nth-child(2){grid-column:8/13;margin-top:8vw}.collection-card:nth-child(3){grid-column:2/7;margin-top:1vw}.collection-card:nth-child(4){grid-column:8/13;margin-top:-1vw}.collection-card:nth-child(5){grid-column:1/6;margin-top:2vw}.collection-card:nth-child(6){grid-column:6/13;margin-top:8vw}.collection-image{position:relative;overflow:hidden}.collection-image img{width:100%;height:auto;display:block;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1),filter .6s ease}.collection-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(0,0,0,.78));pointer-events:none}.collection-card:hover .collection-image img{transform:scale(1.035);filter:brightness(.78)}.collection-info{position:absolute;z-index:2;left:25px;right:25px;bottom:24px}.collection-index{font-size:9px;letter-spacing:.2em;color:#aaa;margin-bottom:10px}.collection-title{font-family:"Playfair Display",Georgia,serif;font-size:clamp(34px,4vw,58px);line-height:.9;letter-spacing:-.04em}.collection-description{max-width:360px;color:#d0d0cc;font-size:11px;line-height:1.6;margin:13px 0 0}.collection-arrow{position:absolute;right:25px;bottom:25px;width:38px;height:38px;border:1px solid rgba(255,255,255,.35);display:grid;place-items:center;font-size:18px;transition:background .25s ease,color .25s ease,border-color .25s ease}.collection-card:hover .collection-arrow{background:#fff;color:#0b0b0c;border-color:#fff}.collections-footer{max-width:var(--max);margin:0 auto;padding:0 clamp(24px,5vw,72px) 100px}.collections-footer-inner{border-top:1px solid var(--line);padding-top:30px;display:flex;justify-content:space-between;gap:30px;color:var(--muted);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
 @media(max-width:800px){.collections-hero::after{display:none}.collections-intro{display:block}.collections-intro>p{margin-top:18px}.collections-grid{grid-template-columns:1fr 1fr;gap:12px}.collection-card:nth-child(n){grid-column:auto;margin-top:0}.collection-card:nth-child(1),.collection-card:nth-child(4){grid-column:span 2}.collection-info{left:18px;right:18px;bottom:18px}.collection-arrow{right:18px;bottom:18px}.collection-description{max-width:75%;font-size:10px}}
 @media(max-width:520px){.collections-page{padding-top:68px}.collections-hero{padding:72px 22px 70px}.collections-hero h1{font-size:clamp(54px,17vw,88px)}.collections-hero p:not(.eyebrow){font-size:13px}.collections-intro{padding:45px 22px 20px}.collections-grid{display:block;padding:20px 14px 80px}.collection-card{margin:0 0 12px!important}.collection-title{font-size:clamp(32px,11vw,48px)}.collection-info{left:16px;right:16px;bottom:16px}.collection-arrow{right:16px;bottom:16px;width:34px;height:34px}.collections-footer{padding:0 22px 70px}.collections-footer-inner{display:block;line-height:1.8}}
-</style></head>
+</style><style>
+/* WORLD WORKS — cinematic, Apple-inspired motion */
+:root{--ww-ease:cubic-bezier(.16,1,.3,1)}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+.site-header, .nav{transition:background .45s ease,border-color .45s ease,backdrop-filter .45s ease}
+nav a::after,.nav div a::after{transform-origin:left;transition:transform .45s var(--ww-ease)}
+.button,.exhibited-label,.gallery-filter,.collection-arrow{transition:color .35s ease,background .35s ease,border-color .35s ease,transform .5s var(--ww-ease)}
+.ww-progress{position:fixed;z-index:10001;top:0;left:0;width:100%;height:2px;pointer-events:none;background:rgba(255,255,255,.08)}
+.ww-progress span{display:block;width:100%;height:100%;background:#f4f2ed;transform:scaleX(0);transform-origin:left center;will-change:transform}
+.ww-reveal{opacity:0;transform:translate3d(0,28px,0);transition:opacity .9s var(--ww-ease),transform 1s var(--ww-ease);transition-delay:var(--ww-delay,0ms)}
+.ww-reveal.ww-visible{opacity:1;transform:translate3d(0,0,0)}
+.ww-reveal.ww-reveal-left{transform:translate3d(-24px,0,0)}
+.ww-reveal.ww-reveal-left.ww-visible{transform:translate3d(0,0,0)}
+.ww-reveal.ww-reveal-right{transform:translate3d(24px,0,0)}
+.ww-reveal.ww-reveal-right.ww-visible{transform:translate3d(0,0,0)}
+.collection-card,.gallery .photo,.item,.feature img,.contact-visual img{backface-visibility:hidden}
+.collection-card{transition:transform .8s var(--ww-ease),border-color .5s ease}
+.collection-card:hover{transform:translate3d(0,-4px,0);border-color:rgba(255,255,255,.25)}
+.item img,.collection-image img,.feature img,.contact-visual img{transition:transform 1.1s var(--ww-ease),filter .8s ease}
+.item:hover img{transform:scale(1.025)}
+.button:hover,.exhibited-label:hover{transform:translateY(-2px)}
+.gallery .photo-button{transition:opacity .45s ease,transform .7s var(--ww-ease)}
+.gallery .photo-button:hover{transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ .ww-reveal,.ww-reveal.ww-reveal-left,.ww-reveal.ww-reveal-right{opacity:1;transform:none;transition:none}
+ .ww-progress{display:none}
+ .collection-card,.gallery .photo-button,.button,.exhibited-label{transition:none}
+}
+</style>
+</head>
 <body>
 <header class="site-header"><a class="brand" href="index.html" aria-label="World Works Photography home"><span class="brand-mark"><img src="favicon.svg" alt="World Works Photography"></span><span><strong>World Works</strong><small>Photography</small></span></a>
 <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
@@ -32,4 +62,63 @@
 <footer><span>© <span id="year"></span> World Works Photography</span><span>World Works Photography</span></footer>
 <script>
 const menuToggle=document.getElementById("menu-toggle"),siteNav=document.getElementById("site-nav");if(menuToggle&&siteNav){menuToggle.addEventListener("click",()=>{const open=siteNav.classList.toggle("open");menuToggle.classList.toggle("open",open);menuToggle.setAttribute("aria-expanded",String(open));menuToggle.setAttribute("aria-label",open?"Close navigation":"Open navigation")});siteNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{siteNav.classList.remove("open");menuToggle.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");menuToggle.setAttribute("aria-label","Open navigation")}))}document.getElementById("year").textContent=new Date().getFullYear();
-</script></body></html>
+</script>
+<script>
+/* World Works cinematic motion system — accessible and lightweight */
+(()=> {
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const progress=document.createElement('div');
+  progress.className='ww-progress';
+  progress.setAttribute('aria-hidden','true');
+  progress.innerHTML='<span></span>';
+  if(!reduceMotion) document.body.appendChild(progress);
+  const bar=progress.querySelector('span');
+  let ticking=false;
+  const updateProgress=()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    if(bar) bar.style.transform='scaleX('+(max>0?Math.min(1,window.scrollY/max):0)+')';
+    ticking=false;
+  };
+  window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(updateProgress);ticking=true}},{passive:true});
+  updateProgress();
+  const revealSelectors=[
+    '.hero-copy','.hero-content','.intro','.section','.feature','.about','.contact',
+    '.gallery-page-header','.gallery-heading','.gallery-filters','.gallery .photo',
+    '.collections-hero','.collections-intro','.collection-card','.collections-footer',
+    '.contact-visual','.contact-copy','.head','.item'
+  ];
+  const targets=[...new Set(revealSelectors.flatMap(s=>Array.from(document.querySelectorAll(s))))];
+  targets.forEach((el,i)=>{
+    el.classList.add('ww-reveal');
+    if(el.matches('.about img,.contact-visual')) el.classList.add('ww-reveal-left');
+    if(el.matches('.feature-meta,.contact-copy')) el.style.setProperty('--ww-delay','90ms');
+    if(el.matches('.gallery .photo,.collection-card,.item')) el.style.setProperty('--ww-delay',Math.min((i%5)*65,260)+'ms');
+  });
+  if(reduceMotion||!('IntersectionObserver' in window)){
+    targets.forEach(el=>el.classList.add('ww-visible'));
+  }else{
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add('ww-visible');observer.unobserve(entry.target)}
+      });
+    },{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(el=>observer.observe(el));
+  }
+  const heroImage=document.querySelector('.hero img');
+  if(heroImage&&!reduceMotion&&window.matchMedia('(min-width: 700px)').matches){
+    let heroTick=false;
+    window.addEventListener('scroll',()=>{
+      if(heroTick)return;
+      heroTick=true;
+      requestAnimationFrame(()=>{
+        const y=Math.min(window.scrollY,window.innerHeight);
+        heroImage.style.setProperty('--ww-scroll',y);
+        heroImage.style.translate='0 '+(y*.08)+'px';
+        heroTick=false;
+      });
+    },{passive:true});
+  }
+})();
+</script>
+
+</body></html>
