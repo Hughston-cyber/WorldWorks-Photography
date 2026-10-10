@@ -65,11 +65,11 @@ html{scroll-padding-top:88px}
 <main>
 <section class="section intro">Photography about <em>movement, places</em> and the details found along the way.</section>
 <section class="section" id="work"><div class="head"><h2>Selected work.</h2><div class="count">01—05 / 14 photographs</div></div><div class="grid">
-<figure class="item flip-card"><div class="flip-inner"><div class="flip-face flip-front"><img src="images/01.jpg" alt="The Dust Of Speed"><span class="flip-hint" aria-hidden="true">TURN TO REVEAL ↗</span></div><div class="flip-face flip-back"><span class="flip-index">01 / SELECTED WORK</span><h3>The Dust Of Speed</h3><span class="flip-year">2025</span><span class="flip-hint">TURN BACK ↗</span></div></div></figure>
-<figure class="item flip-card"><div class="flip-inner"><div class="flip-face flip-front"><img src="images/02.jpg" alt="The Carriage Of Time"><span class="flip-hint" aria-hidden="true">TURN TO REVEAL ↗</span></div><div class="flip-face flip-back"><span class="flip-index">02 / SELECTED WORK</span><h3>The Carriage Of Time</h3><span class="flip-year">2026</span><span class="flip-hint">TURN BACK ↗</span></div></div></figure>
-<figure class="item flip-card"><div class="flip-inner"><div class="flip-face flip-front"><img src="images/10.jpg" alt="Fire and Lights"><span class="flip-hint" aria-hidden="true">TURN TO REVEAL ↗</span></div><div class="flip-face flip-back"><span class="flip-index">03 / SELECTED WORK</span><h3>Fire and Lights</h3><span class="flip-year">2026</span><span class="flip-hint">TURN BACK ↗</span></div></div></figure>
-<figure class="item flip-card"><div class="flip-inner"><div class="flip-face flip-front"><img src="images/14.jpg" alt="City Bound"><span class="flip-hint" aria-hidden="true">TURN TO REVEAL ↗</span></div><div class="flip-face flip-back"><span class="flip-index">04 / SELECTED WORK</span><h3>City Bound</h3><span class="flip-year">2026</span><span class="flip-hint">TURN BACK ↗</span></div></div></figure>
-<figure class="item flip-card"><div class="flip-inner"><div class="flip-face flip-front"><img src="images/13.jpg" alt="Patience"><span class="flip-hint" aria-hidden="true">TURN TO REVEAL ↗</span></div><div class="flip-face flip-back"><span class="flip-index">05 / SELECTED WORK</span><h3>Patience</h3><span class="flip-year">2026</span><span class="flip-hint">TURN BACK ↗</span></div></div></figure>
+<figure class="item flip-card" data-scroll-flip><div class="flip-inner"><div class="flip-face flip-front"><span class="flip-index">01 / SELECTED WORK</span><h3>The Dust Of Speed</h3><span class="flip-year">2025</span><span class="flip-hint" aria-hidden="true">SCROLL TO REVEAL ↓</span></div><div class="flip-face flip-back"><img src="images/01.jpg" alt="The Dust Of Speed" loading="lazy"><span class="flip-hint" aria-hidden="true">PHOTOGRAPH REVEALED ↗</span></div></div></figure>
+<figure class="item flip-card" data-scroll-flip><div class="flip-inner"><div class="flip-face flip-front"><span class="flip-index">02 / SELECTED WORK</span><h3>The Carriage Of Time</h3><span class="flip-year">2026</span><span class="flip-hint" aria-hidden="true">SCROLL TO REVEAL ↓</span></div><div class="flip-face flip-back"><img src="images/02.jpg" alt="The Carriage Of Time" loading="lazy"><span class="flip-hint" aria-hidden="true">PHOTOGRAPH REVEALED ↗</span></div></div></figure>
+<figure class="item flip-card" data-scroll-flip><div class="flip-inner"><div class="flip-face flip-front"><span class="flip-index">03 / SELECTED WORK</span><h3>Fire and Lights</h3><span class="flip-year">2026</span><span class="flip-hint" aria-hidden="true">SCROLL TO REVEAL ↓</span></div><div class="flip-face flip-back"><img src="images/10.jpg" alt="Fire and Lights" loading="lazy"><span class="flip-hint" aria-hidden="true">PHOTOGRAPH REVEALED ↗</span></div></div></figure>
+<figure class="item flip-card" data-scroll-flip><div class="flip-inner"><div class="flip-face flip-front"><span class="flip-index">04 / SELECTED WORK</span><h3>City Bound</h3><span class="flip-year">2026</span><span class="flip-hint" aria-hidden="true">SCROLL TO REVEAL ↓</span></div><div class="flip-face flip-back"><img src="images/14.jpg" alt="City Bound" loading="lazy"><span class="flip-hint" aria-hidden="true">PHOTOGRAPH REVEALED ↗</span></div></div></figure>
+<figure class="item flip-card" data-scroll-flip><div class="flip-inner"><div class="flip-face flip-front"><span class="flip-index">05 / SELECTED WORK</span><h3>Patience</h3><span class="flip-year">2026</span><span class="flip-hint" aria-hidden="true">SCROLL TO REVEAL ↓</span></div><div class="flip-face flip-back"><img src="images/13.jpg" alt="Patience" loading="lazy"><span class="flip-hint" aria-hidden="true">PHOTOGRAPH REVEALED ↗</span></div></div></figure>
 </div></section>
 <section class="feature"><img src="images/10.jpg" alt="Fire and Lights"><div class="feature-meta"><div><div class="feature-title">Fire and Lights.</div><a class="exhibited-label" href="gallery.html?filter=exhibited">EXHIBITED WORK</a></div><div class="muted">2026 · Exhibition</div></div></section>
 <section class="section about" id="about"><img src="images/13.jpg" alt="Patience"><div><div class="eyebrow">About World Works</div><h2>Look<br>closer.</h2><p>World Works Photography is a growing collection centred around transport, movement and the world around us.</p><p>Each photograph is part of a larger story — from the rush of a train passing through the city to the quieter details that are easy to miss.</p></div></section>
@@ -144,22 +144,51 @@ function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true
 
 
 <script>
-/* Tap-to-flip cards for touchscreens; keyboard users can use Enter/Space. */
-document.querySelectorAll('.flip-card').forEach(card=>{
-  card.tabIndex=0;
-  card.setAttribute('role','button');
-  card.setAttribute('aria-label','Flip photograph to reveal its title');
-  const flip=()=>{
-    const next=!card.classList.contains('is-flipped');
-    card.classList.toggle('is-flipped',next);
-    card.setAttribute('aria-pressed',String(next));
-    card.setAttribute('aria-label',next?'Flip back to photograph':'Flip photograph to reveal its title');
+/* Scroll-controlled 3D reveal: the title faces forward until scrolling turns the card to its photograph. */
+(()=> {
+  const cards=[...document.querySelectorAll('[data-scroll-flip]')];
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!cards.length)return;
+  if(reduceMotion){
+    cards.forEach(card=>card.classList.add('scroll-revealed'));
+    return;
+  }
+  let ticking=false;
+  const update=()=>{
+    const vh=window.innerHeight;
+    cards.forEach(card=>{
+      const rect=card.getBoundingClientRect();
+      // Rotation begins as the card enters the lower part of the viewport and completes as it approaches mid-screen.
+      const start=vh*0.88;
+      const end=vh*0.30;
+      const progress=Math.max(0,Math.min(1,(start-rect.top)/(start-end)));
+      card.style.setProperty('--flip-progress',progress.toFixed(4));
+      card.classList.toggle('scroll-revealed',progress>=1);
+      card.setAttribute('aria-label',progress>=.5?'Photograph revealed: '+card.querySelector('.flip-back img').alt:'Scroll to reveal photograph: '+card.querySelector('.flip-front h3').textContent);
+    });
+    ticking=false;
   };
-  card.addEventListener('click',e=>{e.preventDefault();flip()});
-  card.addEventListener('keydown',e=>{
-    if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}
-  });
-});
+  const requestUpdate=()=>{if(!ticking){requestAnimationFrame(update);ticking=true}};
+  window.addEventListener('scroll',requestUpdate,{passive:true});
+  window.addEventListener('resize',requestUpdate);
+  update();
+})();
 </script>
-
 </body></html>
+<style>
+/* Scroll-driven name-to-photograph cards */
+.flip-card{cursor:default;perspective:1400px}
+.flip-inner{transform:rotateY(calc(var(--flip-progress, 0) * 180deg));transition:none!important}
+.flip-card:hover .flip-inner,.flip-card:focus-visible .flip-inner,.flip-card.is-flipped .flip-inner{transform:rotateY(calc(var(--flip-progress, 0) * 180deg))}
+.flip-front{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:clamp(20px,3vw,42px);background:#e9e7e0;color:#111;border:1px solid rgba(255,255,255,.12)}
+.flip-front .flip-index{font-size:8px;letter-spacing:.17em;text-transform:uppercase;color:#777}
+.flip-front h3{font-family:Georgia,serif;font-size:clamp(25px,3.4vw,52px);font-weight:400;line-height:.96;letter-spacing:-.055em;margin:20px 0 14px;overflow-wrap:anywhere}
+.flip-front .flip-year{font-size:10px;letter-spacing:.14em;color:#777}
+.flip-front .flip-hint{color:#555}
+.flip-back{transform:rotateY(180deg);padding:0;background:#111}
+.flip-back img{width:100%;height:100%;object-fit:cover;display:block}
+.flip-back .flip-hint{color:#fff}
+.flip-card:hover .flip-front img{transform:none}
+@media(max-width:700px){.flip-card{margin-bottom:55px!important}.flip-front{padding:22px}.flip-front h3{font-size:clamp(28px,8vw,42px)}}
+@media(prefers-reduced-motion:reduce){.flip-inner{transition:none!important;transform:none!important}.flip-back{display:none}}
+</style>
