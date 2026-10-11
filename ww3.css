@@ -1,14 +1,14 @@
 /* WORLD WORKS 3.0 — Field Notes design language for the inner pages */
-:root{--bg:#f1eee5;--surface:#e5e0d3;--text:#202521;--muted:#6e746d;--line:rgba(32,37,33,.22);--max:1440px;--ww-orange:#f05a35}
+:root{--bg:#f1eee5;--surface:#e5e0d3;--text:#202521;--muted:#6e746d;--line:rgba(32,37,33,.22);--max:1440px;--ww-orange:#a45d48}
 html{background:#f1eee5;scroll-behavior:smooth}
 body{background:#f1eee5!important;color:#202521!important;font-family:Manrope,system-ui,sans-serif!important}
 .site-header{background:rgba(241,238,229,.9)!important;color:#202521!important;border-bottom:1px solid rgba(32,37,33,.2)!important;backdrop-filter:blur(18px)}
-.brand-mark{border-color:#f05a35!important}
+.brand-mark{border-color:#a45d48!important}
 .brand strong{font-weight:800;letter-spacing:-.04em}
 .brand small{color:#6e746d!important}
 .site-header nav a{color:#202521!important}
-.site-header nav a:after{background:#f05a35!important}
-.eyebrow{color:#f05a35!important;font-family:"DM Mono",monospace!important;letter-spacing:.14em!important}
+.site-header nav a:after{background:#a45d48!important}
+.eyebrow{color:#a45d48!important;font-family:"DM Mono",monospace!important;letter-spacing:.14em!important}
 .gallery-page,.collections-page{background:#f1eee5!important;color:#202521!important}
 .gallery-page-header,.collections-hero{background:#f1eee5!important;color:#202521!important}
 .gallery-page-header h1,.collections-hero h1{font-family:Manrope,sans-serif!important;font-weight:800!important;letter-spacing:-.1em!important;line-height:.82!important}
@@ -16,11 +16,11 @@ body{background:#f1eee5!important;color:#202521!important;font-family:Manrope,sy
 .gallery-page-header p:not(.eyebrow),.collections-hero p:not(.eyebrow){color:#6e746d!important}
 .gallery-heading{border-color:rgba(32,37,33,.22)!important;color:#202521!important;font-family:"DM Mono",monospace!important}
 .gallery-filter{border-color:rgba(32,37,33,.3)!important;color:#202521!important;background:transparent!important}
-.gallery-filter.active,.gallery-filter:hover{background:#f05a35!important;color:#fff!important;border-color:#f05a35!important}
+.gallery-filter.active,.gallery-filter:hover{background:#a45d48!important;color:#fff!important;border-color:#a45d48!important}
 .gallery .photo{background:#e5e0d3!important}
 .gallery .photo-button{background:#e5e0d3!important;color:#202521!important}
 .gallery .photo-number{color:#fff!important;text-shadow:0 1px 16px rgba(0,0,0,.45)!important}
-.exhibited-tag{background:#f05a35!important;color:#fff!important}
+.exhibited-tag{background:#a45d48!important;color:#fff!important}
 .gallery-loader{background:#f1eee5!important;color:#202521!important}
 .gallery-loader-content{color:#202521!important}
 .gallery-loader-eyebrow,.gallery-loader-status{color:#6e746d!important}
@@ -32,10 +32,10 @@ body{background:#f1eee5!important;color:#202521!important;font-family:Manrope,sy
 .collections-intro>p{color:#6e746d!important}
 .collection-card{background:#e5e0d3!important;border-color:rgba(32,37,33,.18)!important}
 .collection-card:after{background:linear-gradient(0deg,rgba(18,22,18,.78),transparent 75%)!important}
-.collection-index{color:#ffb59f!important;font-family:"DM Mono",monospace!important}
+.collection-index{color:#d3a99b!important;font-family:"DM Mono",monospace!important}
 .collection-title{font-family:Manrope,sans-serif!important;font-weight:800!important;letter-spacing:-.07em!important}
 .collection-description{color:rgba(255,255,255,.78)!important}
-.collection-arrow{background:#f05a35!important;color:#fff!important;border-color:#f05a35!important}
+.collection-arrow{background:#a45d48!important;color:#fff!important;border-color:#a45d48!important}
 .collections-footer-inner{border-color:rgba(32,37,33,.22)!important;color:#6e746d!important}
 .contact-hero{background:#f1eee5!important;color:#202521!important}
 .contact-visual{background:#e5e0d3!important}
@@ -45,12 +45,12 @@ body{background:#f1eee5!important;color:#202521!important;font-family:Manrope,sy
 .contact-copy h1{font-family:Manrope,sans-serif!important;font-weight:800!important;letter-spacing:-.09em!important}
 .contact-copy h1 em{font-family:"Playfair Display",Georgia,serif!important;font-weight:500!important}
 .contact-copy p:not(.contact-eyebrow){color:#6e746d!important}
-.contact-copy:before{color:#f05a35!important}
+.contact-copy:before{color:#a45d48!important}
 .contact-number{color:rgba(32,37,33,.1)!important}
 .button{border-color:#202521!important;color:#202521!important}
-.button:hover{background:#f05a35!important;color:#fff!important;border-color:#f05a35!important}
+.button:hover{background:#a45d48!important;color:#fff!important;border-color:#a45d48!important}
 footer{background:#f1eee5!important;color:#6e746d!important;border-color:rgba(32,37,33,.22)!important}
 .ww-progress{background:rgba(32,37,33,.08)!important}
-.ww-progress span{background:#f05a35!important}
+.ww-progress span{background:#a45d48!important}
 @media(max-width:800px){.site-header nav{background:#f1eee5!important}.site-header nav a{color:#202521!important}.contact-hero{background:#f1eee5!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
