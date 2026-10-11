@@ -21,7 +21,7 @@
 .site-nav nav{display:flex;gap:clamp(14px,2.5vw,34px);align-items:center}.site-nav nav a{font:10px var(--mono);text-transform:uppercase;letter-spacing:.08em;position:relative}.site-nav nav a:after{content:"";position:absolute;bottom:-8px;left:0;width:100%;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s}.site-nav nav a:hover:after,.site-nav nav a:focus-visible:after{transform:scaleX(1)}
 .menu-toggle{display:none}
 .hero{min-height:min(900px,100svh);height:100svh;max-height:1100px;position:relative;background:#1b1e1b;color:var(--paper);overflow:hidden;display:flex;align-items:flex-end;padding:clamp(24px,5vw,78px)}
-.hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 54%;filter:brightness(.64) saturate(.82);transform:scale(1.04);animation:hero-arrive 1.6s var(--ease) both}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,15,12,.58),transparent 75%),linear-gradient(0deg,rgba(10,15,12,.62),transparent 70%);pointer-events:none}
+.hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 54%;filter:brightness(.64) saturate(.82);transform:scale(1.04);animation:hero-arrive 1.6s var(--ease) both}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,15,12,.76),rgba(10,15,12,.12) 82%),linear-gradient(0deg,rgba(10,15,12,.82),rgba(10,15,12,.08) 78%);pointer-events:none}
 @keyframes hero-arrive{to{transform:scale(1)}}
 .hero-topline{position:absolute;z-index:2;left:clamp(24px,5vw,78px);right:clamp(24px,5vw,78px);top:112px;display:flex;justify-content:space-between;gap:20px;font:9px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(241,238,229,.82)}
 .hero-copy{position:relative;z-index:2;max-width:1100px}.hero-kicker{display:flex;align-items:center;gap:10px;font:10px var(--mono);letter-spacing:.15em;text-transform:uppercase}.signal-dot{display:inline-block;width:8px;height:8px;background:var(--orange);border-radius:50%;box-shadow:0 0 0 5px rgba(240,90,53,.2)}
@@ -44,6 +44,17 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:26px clamp(20
 @media(max-width:760px){.site-nav{height:68px}.site-nav nav{gap:12px}.site-nav nav a{font-size:8px}.brand{font-size:11px}.brand-mark{width:30px;height:30px}.hero{min-height:720px;height:92svh}.hero-topline{top:94px;font-size:8px}.hero h1{font-size:clamp(76px,18vw,140px)}.hero-bottom{display:block}.hero-description{max-width:300px}.hero-scroll{margin-top:22px}.intro{grid-template-columns:1fr;gap:25px}.intro-note{margin:0;max-width:380px}.work-head{align-items:start;flex-direction:column}.work-head p{text-align:left}.work-grid{display:block}.flip-card,.flip-card:nth-child(n){margin:0 0 56px;display:block}.flip-inner{aspect-ratio:4/3}.flip-card.portrait .flip-inner{aspect-ratio:3/4}.feature,.about{grid-template-columns:1fr}.feature{gap:45px}.about{gap:40px}.about-copy h2{font-size:clamp(70px,18vw,120px)}.end-card{margin:80px 0}.end-card h2{font-size:clamp(60px,16vw,110px)}footer{line-height:1.8;flex-direction:column}.hero-topline span:last-child{display:none}}
 @media(max-width:480px){.site-nav{padding:0 16px}.site-nav nav{gap:9px}.site-nav nav a{font-size:7px;letter-spacing:.02em}.brand{gap:7px}.brand small{font-size:7px}.hero{padding:22px}.hero-topline{left:22px;right:22px}.hero h1{font-size:21vw}.card-instruction{font-size:8px}.card-bottom{font-size:8px}.flip-front{padding:20px}.flip-front h3{font-size:clamp(30px,9vw,44px)}.feature-art{padding:6px}.about-stats{gap:20px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker-track,.hero-image{animation:none}.reveal{opacity:1;transform:none;transition:none}.flip-inner{transform:none!important}.flip-front{display:none}.flip-back{transform:none}.flip-back:after{display:none}}
+/* Readability pass: stronger text contrast and more comfortable small type */
+:root{--muted:#50574f;--orange:#d94320}
+.eyebrow,.card-top,.card-bottom,.hero-kicker,.hero-topline,.hero-scroll,.card-instruction,.image-caption,footer,.text-link,.ticker-track span{font-size:11px}
+.hero-description,.intro-note,.feature-copy p,.about-copy p,.end-card p{font-size:15px}
+.flip-front h3{color:#202521}
+.hero-description{color:#fff}
+.hero-topline{color:#fff}
+.hero-scroll{color:#fff}
+.card-instruction{color:#50574f}
+.reveal{transition:opacity .9s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+@media(max-width:480px){.site-nav nav a{font-size:9px}.brand small{font-size:8px}.hero-topline,.hero-kicker,.hero-scroll{font-size:10px}.card-instruction{font-size:10px}}
 </style>
 </head>
 <body>
