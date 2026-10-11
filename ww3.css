@@ -54,3 +54,22 @@ footer{background:#252825!important;color:#b0b2a9!important;border-color:rgba(24
 .ww-progress span{background:#a45d48!important}
 @media(max-width:800px){.site-header nav{background:#252825!important}.site-header nav a{color:#f1eee5!important}.contact-hero{background:#252825!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Readability pass: accessible contrast, stronger accents, larger supporting text */
+:root{--muted:#d0d2c9;--ww-orange:#ff795b}
+.eyebrow{color:#ff987f!important;font-size:11px!important}
+.site-header nav a,.brand,.gallery-heading,.gallery-filter,.gallery-page-header p,.collections-hero p,.collections-intro>p,.collections-footer-inner,.contact-copy p:not(.contact-eyebrow),footer{font-size:12px!important}
+.gallery-page-header p:not(.eyebrow),.collections-hero p:not(.eyebrow),.collections-intro>p,.contact-copy p:not(.contact-eyebrow){color:#e0e1da!important;line-height:1.75!important}
+.gallery-heading{color:#fff!important}
+.gallery-filter{border-width:1px!important;border-color:rgba(255,255,255,.6)!important}
+.gallery-filter.active,.gallery-filter:hover{background:#ff795b!important;border-color:#ff795b!important;color:#1d211e!important}
+.brand small{color:#d0d2c9!important}
+.brand-mark{border-color:#ff795b!important}
+.site-header nav a:after{background:#ff795b!important}
+.exhibited-tag,.collection-arrow{background:#ff795b!important;border-color:#ff795b!important;color:#1d211e!important}
+.collection-index{color:#ffb8a7!important}
+.contact-copy:before{color:#ff987f!important}
+.button:hover{background:#ff795b!important;border-color:#ff795b!important;color:#1d211e!important}
+.gallery-loader-eyebrow,.gallery-loader-status{color:#d0d2c9!important}
+.gallery-loader-skip{border-color:#f1eee5!important;color:#fff!important;font-size:12px!important}
+@media(max-width:800px){.site-header nav a{font-size:11px!important}}
