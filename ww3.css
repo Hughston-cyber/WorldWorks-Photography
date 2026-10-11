@@ -73,3 +73,11 @@ footer{background:#252825!important;color:#b0b2a9!important;border-color:rgba(24
 .gallery-loader-eyebrow,.gallery-loader-status{color:#d0d2c9!important}
 .gallery-loader-skip{border-color:#f1eee5!important;color:#fff!important;font-size:12px!important}
 @media(max-width:800px){.site-header nav a{font-size:11px!important}}
+
+
+/* Lighter typography across the inner pages */
+:root{--muted:#e0e1da}
+body{color:#f1eee5}
+.gallery-page-header p,.collections-hero p,.collections-intro>p,.contact-copy p,.collection-description,.gallery-card-title,.gallery-meta,.contact-note{color:#e5e6df!important}
+.gallery-page-header h1,.collections-hero h1,.collections-intro h2,.contact-copy h1,.collection-title,.gallery-card h2{color:#fff!important}
+.site-header nav a,.brand,.brand small,.collections-footer-inner,footer{color:#e5e6df!important}
