@@ -230,9 +230,9 @@ nav a::after,.nav div a::after{transform-origin:left;transition:transform .45s v
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/Photo095.jpg" data-caption="Trees" data-year="2026"><img src="images/Photo095.jpg" alt="Trees — World Works Photography" loading="lazy"><span class="photo-number">Trees</span></button></figure>
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/Photo096.jpg" data-caption="Showing Age" data-year="2026"><img src="images/Photo096.jpg" alt="Showing Age — World Works Photography" loading="lazy"><span class="photo-number">Showing Age</span></button></figure>
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/Photo097.jpg" data-caption="Greenery" data-year="2026"><img src="images/Photo097.jpg" alt="Greenery — World Works Photography" loading="lazy"><span class="photo-number">Greenery</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/Photo098.jpg" data-caption="Under the Over" data-year="2026"><img src="images/Photo098.jpg" alt="Under the Over — World Works Photography" loading="lazy"><span class="photo-number">Under the Over</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/Photo099.jpg" data-caption="With Pride" data-year="2026"><img src="images/Photo099.jpg" alt="With Pride — World Works Photography" loading="lazy"><span class="photo-number">With Pride</span></button></figure>
-<figure class="photo photo-wide"><button class="photo-button" data-src="images/Photo100.jpg" data-caption="Natrual Beauty" data-year="2026"><img src="images/Photo100.jpg" alt="Natrual Beauty — World Works Photography" loading="lazy"><span class="photo-number">Natrual Beauty</span></button></figure>
+<figure class="photo photo-wide"><button class="photo-button" data-src="images/Photo098jpg.jpg" data-caption="Under the Over" data-year="2026"><img src="images/Photo098jpg.jpg" alt="Under the Over — World Works Photography" loading="lazy"><span class="photo-number">Under the Over</span></button></figure>
+<figure class="photo photo-wide"><button class="photo-button" data-src="images/Photo099jpg.jpg" data-caption="With Pride" data-year="2026"><img src="images/Photo099jpg.jpg" alt="With Pride — World Works Photography" loading="lazy"><span class="photo-number">With Pride</span></button></figure>
+<figure class="photo photo-wide"><button class="photo-button" data-src="images/Photo100jpg.jpg" data-caption="Natrual Beauty" data-year="2026"><img src="images/Photo100jpg.jpg" alt="Natrual Beauty — World Works Photography" loading="lazy"><span class="photo-number">Natrual Beauty</span></button></figure>
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/Photo101.jpg" data-caption="Branches" data-year="2026"><img src="images/Photo101.jpg" alt="Branches — World Works Photography" loading="lazy"><span class="photo-number">Branches</span></button></figure>
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/Photo102.jpg" data-caption="On The Wire" data-year="2026"><img src="images/Photo102.jpg" alt="On The Wire — World Works Photography" loading="lazy"><span class="photo-number">On The Wire</span></button></figure>
 <figure class="photo photo-wide"><button class="photo-button" data-src="images/Photo103.jpg" data-caption="Wholesome" data-year="2026"><img src="images/Photo103.jpg" alt="Wholesome — World Works Photography" loading="lazy"><span class="photo-number">Wholesome</span></button></figure>
@@ -305,28 +305,38 @@ galleryLoaderSkip.addEventListener("click",hideGalleryLoader);
 setTimeout(()=>galleryLoaderSkip.classList.add("is-visible"),3500);
 
 const galleryImages=Array.from(document.querySelectorAll(".gallery .photo img"));
-let galleryImagesLoaded=0;
-const totalGalleryImages=galleryImages.length;
-
-function updateGalleryLoading(){
-  galleryImagesLoaded++;
-  galleryLoaderStatus.textContent=galleryImagesLoaded+" / "+totalGalleryImages+" photographs loaded";
-  if(galleryImagesLoaded>=totalGalleryImages){
-    galleryLoaderStatus.textContent="Collection ready";
-    setTimeout(hideGalleryLoader,500);
+const initialGalleryImages=galleryImages.slice(0,3);
+let initialImagesLoaded=0;
+let galleryLoaderFinished=false;
+function finishGalleryLoader(){
+  if(galleryLoaderFinished)return;
+  galleryLoaderFinished=true;
+  galleryLoaderStatus.textContent="Collection ready";
+  setTimeout(hideGalleryLoader,250);
+}
+function markGalleryImage(img){
+  img.classList.add("is-loaded");
+  if(img.classList.contains("is-error"))return;
+  if(initialGalleryImages.includes(img)){
+    initialImagesLoaded++;
+    if(initialImagesLoaded>=initialGalleryImages.length)finishGalleryLoader();
   }
 }
-
-galleryImages.forEach(img=>{
-  const preload=new Image();
-  const markLoaded=()=>{
-    img.classList.add("is-loaded");
-    updateGalleryLoading();
-  };
-  preload.onload=markLoaded;
-  preload.onerror=markLoaded;
-  preload.src=img.currentSrc||img.src;
+galleryImages.forEach((img,index)=>{
+  img.addEventListener("load",()=>markGalleryImage(img),{once:true});
+  img.addEventListener("error",()=>{
+    img.classList.add("is-loaded","is-error");
+    if(initialGalleryImages.includes(img)){
+      initialImagesLoaded++;
+      if(initialImagesLoaded>=initialGalleryImages.length)finishGalleryLoader();
+    }
+  },{once:true});
+  if(img.complete){
+    if(img.naturalWidth>0)markGalleryImage(img);
+    else if(index<3)img.dispatchEvent(new Event("error"));
+  }
 });
+setTimeout(finishGalleryLoader,2200);
 </script>
 <script>
 const galleryFilters=Array.from(document.querySelectorAll(".gallery-filter")),galleryPhotos=Array.from(document.querySelectorAll(".gallery .photo")),photoCount=document.getElementById("photo-count");
